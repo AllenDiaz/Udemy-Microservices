@@ -10,7 +10,7 @@ app.use(cors());
 const posts = {};
 
 const handleEvents = (type, data) => {
- if (type === 'PostCreated') {
+    if (type === 'PostCreated') {
         const { id, title } = data;
         
         posts[id] = { id, title, comments: [] };
@@ -44,7 +44,7 @@ app.get('/posts', (req, res) => {
     res.send(posts)
 });
 
-app.post('/events', (req, res) => {
+app.post('/events', (req, res) => { 
     const { type, data } = req.body;
 
    handleEvents(type, data);
@@ -62,5 +62,6 @@ app.listen(4002, async () => {
         }
     } catch (err) {
         console.log('Error fetching events:', err.message);
+         
     }
 });
