@@ -1,0 +1,10 @@
+apiVersion: 1.0
+kind: Pod
+metadata:
+  name:posts
+  spec:
+  - containers:
+    - name:posts
+      image:blog-posts:latest
+      ports:
+        - containerPort:3000
