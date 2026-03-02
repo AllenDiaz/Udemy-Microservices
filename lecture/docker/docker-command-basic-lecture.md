@@ -58,3 +58,4 @@ This lesson provides a refresher on essential Docker commands that will be frequ
 - **View logs** with `docker logs`.
 
 These commands form the foundation for working with Docker and will later be extended into Kubernetes workflows.
+  
