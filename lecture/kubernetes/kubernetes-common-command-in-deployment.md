@@ -14,4 +14,16 @@
 | **Command**                          | **Purpose** |
 |--------------------------------------|-------------|
 | `kubectl get deployments`            | Lists all deployments in the cluster. Shows desired vs available Pods. |
-| `kubectl get pods`                   | Lists Pods created by deployments.
+| `kubectl get pods`                   | Lists Pods created by deployments. |
+| `kubectl delete pod <pod-name>`      | Deletes a Pod. Deployment will recreate it automatically. |
+| `kubectl describe deployment <name>` | Prints detailed info and events for debugging. |
+| `kubectl apply -f <file>.yaml`       | Creates a deployment from a config file. |
+| `kubectl delete deployment <name>`   | Deletes a deployment and all associated Pods. |
+
+---
+
+## ⚙️ Step-by-Step Examples
+
+### 1. Create Deployment
+```bash
+kubectl apply -f posts-depl.yaml
