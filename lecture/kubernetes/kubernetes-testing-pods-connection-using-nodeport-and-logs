@@ -1,0 +1,34 @@
+# Kubernetes Lesson: Testing Pod Communication with NodePort and Logs
+
+## Key Concepts
+- **NodePort Service**: Exposes a pod to external traffic for development/testing.
+- **Postman Testing**: Used to send HTTP requests to services running inside the cluster.
+- **Log Verification**: Ensures pods are exchanging events correctly.
+
+## Practical Example
+- **Accessing Posts Service via NodePort**:
+  - Run `kubectl get services` to find the NodePort assigned (e.g., `34002`).
+  - On Docker for Mac/Windows: `http://localhost:34002/posts`
+  - On Minikube: `http://<minikube-ip>:<nodeport>/posts`
+
+- **Postman Setup**:
+  - Method: `POST`
+  - URL: `http://localhost:34002/posts`
+  - Headers: `Content-Type: application/json`
+  - Body (raw JSON):
+    ```json
+    {
+      "title": "Test Post"
+    }
+    ```
+  - Expected Response: `201 Created`
+
+## Step-by-Step Process
+
+### 1. Send Request
+- Use Postman to issue a `POST` request to the Posts NodePort service.
+
+### 2. Check Logs
+- List pods:
+  ```bash
+  kubectl get pods
