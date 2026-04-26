@@ -15,18 +15,15 @@ app.post('/events', (req, res) => {
     axios.post('http://posts-clusterip-srv:4000/events', event).catch(err => {
         console.log('Error sending to posts service:', err.message);
     });
-    // axios.post('http://localhost:4001/events', event).catch(err => {
-    //     console.log('Error sending to comments service:', err.message);
-    // });
-    // axios.post('http://localhost:4002/events', event).catch(err => {
-    //     console.log('Error sending to service on 4002:', err.message);
-    // });
-    // axios.post('http://localhost:4002/events', event).catch(err => {
-    //     console.log('Error sending to service on 4002:', err.message);
-    // });
-    // axios.post('http://localhost:4003/events', event).catch(err => {
-    //     console.log('Error sending to service on 4003:', err.message);
-    // });
+    axios.post('http://comments-srv:4001/events', event).catch(err => {
+        console.log('Error sending to comments service:', err.message);
+    });
+    axios.post('http://moderation-srv:4002/events', event).catch(err => {
+        console.log('Error sending to moderation service:', err.message);
+    });
+    axios.post('http://query-srv:4004/events', event).catch(err => {
+        console.log('Error sending to query service:', err.message);
+    });
 
     res.send({status: "OK"});
 });
